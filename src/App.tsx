@@ -26,7 +26,7 @@ function App() {
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
       type="password"
-      className="p-3"
+      className="p-3 password-input"
      />
     </main>
    ) : (
