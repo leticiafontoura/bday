@@ -17,7 +17,7 @@ function FormComponent() {
   const { name, value, type, checked } = event.target
   setFormData({
    ...formData,
-   [name]: type === 'radio' ? value : type === 'checkbox' ? checked : value.trim()
+   [name]: type === 'checkbox' ? checked : value
   })
  }
 
