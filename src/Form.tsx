@@ -25,9 +25,10 @@ function FormComponent() {
   event.preventDefault()
   push(ref(database), {
    guestName: formData.guestName,
-   invite: formData.invite
+   invite: formData.invite,
+   companion: formData.companion,
+   companionName: formData.companionName
   }).then(() => setIsSaved(true)).catch(() => console.log('nao salvou'))
-  console.log('Form data:', formData)
  }
 
  const handleResetForm = () => {
