@@ -7,7 +7,7 @@ function App() {
  const [canChangePage, setCanChangePage] = useState(false)
 
  useEffect(() => {
-  if (inputValue === 'linkinpark') {
+  if (inputValue === import.meta.env.VITE_PASSWORD) {
    setIsRightPassword(true)
    setTimeout(() => {
     setCanChangePage(true)
