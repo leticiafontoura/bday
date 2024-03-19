@@ -18,7 +18,7 @@ function App() {
   return (
   <>
    {!canChangePage ? (
-    <main className={`${isRightPassword ? 'fade-out' : ''} h-screen flex flex-col justify-center items-center`}>
+    <main className={`${isRightPassword ? 'fade-out' : ''} h-full flex flex-col justify-center items-center`}>
      <p className="mb-3">
       Por favor, insira a senha para entrar:
      </p>

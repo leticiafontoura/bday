@@ -64,7 +64,7 @@ function Content() {
     <FormComponent />
    </div>
    <div className="app-background">
-    <video ref={videoRef} autoPlay muted={isVideoOnMute} loop>
+    <video ref={videoRef} autoPlay playsInline muted={isVideoOnMute} loop>
      <source src={Xureg} type="video/mp4" />
     </video>
    </div>

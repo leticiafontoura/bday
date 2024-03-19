@@ -4,15 +4,28 @@
  src: url('./assets/Porkys.ttf.woff') format('woff');
 }
 
-html, #root {
-  overflow: scroll;
+@font-face {
+ font-family: 'Comic Sans';
+ src: url('./assets/comic-sans.ttf');
+ src: url('./assets/comic-sans.woff') format('woff');
+}
+
+html {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   background-color: #BDD358;
   line-height: 20px;
-  font-family: 'Comic Sans MS', cursive;
+  font-family: 'Comic Sans', cursive;
   color: #5a5a5a;
   box-sizing: border-box;
+}
+
+body, #root {
+ height: 100%;
+}
+
+::-webkit-scrollbar {
+ display: none;
 }
 
 .fade-out {
@@ -133,7 +146,7 @@ button[type="submit"].submit-btn, button.submit-btn {
  font-size: 40px;
  text-align: center;
  font-family: "League Script", cursive;
- font-weight: 400;
+ font-weight: 600;
  font-style: normal;
  line-height: 40px;
 }
@@ -174,7 +187,7 @@ video {
 
 .content {
   overflow-y: scroll;
-  height: 60vh;
+  height: 50vh;
   max-width: 100%;
   width: 100%;
   padding: 20px;
