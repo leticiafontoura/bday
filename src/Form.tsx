@@ -2,10 +2,13 @@
 import { getDatabase, push, ref } from 'firebase/database'
 import { useState } from 'react'
 import { app } from './firebase'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function FormComponent() {
  const database = getDatabase(app)
  const [isSaved, setIsSaved] = useState(false)
+ const [isSaving, setIsSaving] = useState(false)
  const [formData, setFormData] = useState({
   guestName: '',
   invite: '',
@@ -23,12 +26,16 @@ function FormComponent() {
 
  const sendConfirmation = (event: any) => {
   event.preventDefault()
+  setIsSaving(true)
   push(ref(database), {
    guestName: formData.guestName,
    invite: formData.invite,
    companion: formData.companion,
    companionName: formData.companionName
-  }).then(() => setIsSaved(true)).catch(() => console.log('nao salvou'))
+  }).then(() => {
+   setIsSaved(true)
+   setIsSaving(false)
+  }).catch(() => console.log('nao salvou'))
  }
 
  const handleResetForm = () => {
@@ -61,7 +68,7 @@ function FormComponent() {
    ) : (
     <>
     <div className="mb-3">
-     <label htmlFor="guestName">Nome: </label>
+     <label htmlFor="guestName" className="mb-3 block">Nome: </label>
      <input
       name="guestName"
       id="guestName"
@@ -126,8 +133,12 @@ function FormComponent() {
       )}
      </div>
     )}
-    <button className="submit-btn" type="submit">
-     Enviar
+    <button className="submit-btn" type="submit" disabled={isSaving}>
+     {isSaving ? (
+      <FontAwesomeIcon icon={faCircleNotch} className="loader" />
+     ) : (
+      'Enviar'
+     )}
     </button>
     </>
    )}

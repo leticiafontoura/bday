@@ -1,18 +1,34 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown, faArrowUp, faVolumeHigh, faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
 import BurekShurro from './assets/burek-shurro.jpeg'
 import Xureg from './assets/xureg.mp4'
 import FormComponent from './Form'
 
 function Content() {
  const videoRef = useRef<HTMLVideoElement | null>(null)
+ const contentRef = useRef<HTMLDivElement | null>(null)
  const [isVideoOnMute, setIsVideoOnMute] = useState<boolean>(true)
  const handleVideo = () => {
   if (videoRef.current) {
    videoRef.current.volume = 1
   }
+ }
+
+
+ const scrollDown = () => {
+  contentRef?.current?.scrollBy({
+   top: 50,
+   behavior: 'smooth'
+  })
+ }
+
+ const scrollUp = () => {
+  contentRef?.current?.scrollBy({
+   top: -50,
+   behavior: 'smooth'
+  })
  }
 
  useEffect(() => {
@@ -33,7 +49,15 @@ function Content() {
      <span className="pl-2">{isVideoOnMute ? 'Solta o som, DJ!' : 'Abaixa essa porra'}</span>
     </button>
    </div>
-   <div className="content">
+   <div className="content" ref={contentRef}>
+    <div className="scroll-buttons flex flex-col fixed">
+     <button onClick={scrollUp}>
+      <FontAwesomeIcon icon={faArrowUp} />
+     </button>
+     <button onClick={scrollDown}>
+      <FontAwesomeIcon icon={faArrowDown} />
+     </button>
+    </div>
     <h1 className="title">Ei, você, pessoa do reino de tão, tão distante...</h1>
     <p>
      Em um sábado frio e chuvoso, mais especificamente o sábado de 02 de julho de 1994, na longínqua cidade de Dourados, nascia...</p>
